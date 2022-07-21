@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var integerArray [4]int
 
@@ -52,7 +54,8 @@ func main() {
 
 	arrInt := []int{1, 2, 3, 55, 6}
 	fmt.Println(matchSum(arrInt, 5))
-
+	arrInt = []int{-1, 1, 3, -5}
+	fmt.Println(maximumSubArray(arrInt))
 }
 
 func containsDuplicate(nums []int) bool {
@@ -80,4 +83,26 @@ func matchSum(nums []int, target int) []int {
 	}
 
 	return []int{}
+}
+
+func maximumSubArray(list []int) int {
+	fmt.Println(list)
+	//arrValues := []int{}
+	var sum int
+	//var maxSumTmp int
+	for k, _ := range list {
+		fmt.Println("ROUND - " + string(k))
+		for i := k; i <= (len(list) - 1); i++ {
+			fmt.Println(list[i])
+			sum += list[i]
+			fmt.Println(sum)
+
+			fmt.Println("-----------------")
+			//if maxSumTmp > maxSum {
+			//	maxSum = maxSumTmp
+			//}
+		}
+		//fmt.Println(maxSum)
+	}
+	return 1
 }
