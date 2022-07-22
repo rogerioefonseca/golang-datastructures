@@ -32,11 +32,12 @@ func reverseString(str string, separator string) {
 // Linear Solution O(n)
 func reverseStringLinear(s string) string {
 	r := []rune(s)
-	for i, j := 0, len(r)-1; i < len(r)/2; i, j = i+1, j-1 {
-		r[i], r[j] = r[j], r[i]
+	reversed := ""
+	for i := len(r) - 1; i >= 0; i-- {
+		reversed += string(r[i])
 	}
 
-	return string(r)
+	return reversed
 }
 
 func checkRune(s string) {
@@ -56,16 +57,11 @@ func main() {
 	// The string contains just string..? yes since it is a string... SURE!
 	// Do I need to check the paramters
 	// Get the string
-	originalString := "My name is Rogerio"
-	reverseString(originalString, " ")
-	reverseString("Code challenge", " ")
-	reverseString("Code challenge 222", "-")
-	fmt.Printf("%s\n", reverseStringLinear("Code challenge 222 LINEAR"))
-	reverseString("", "")
-
-	c := []rune("ø")
-	fmt.Printf("%b %T\n", c, c)
-
-	checkRune("ABCDE")
+	//	originalString := "My name is Rogerio"
+	//	reverseString(originalString, " ")
+	//	reverseString("Code challenge", " ")
+	//	reverseString("Code challenge 222", "-")
+	reverseStringLinear("Code challenge 222 LINEAR")
+	//	reverseString("", "")
 
 }
