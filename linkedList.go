@@ -43,5 +43,5 @@ func main() {
 	l.prepend(n4)
 
 	l.listAll()
-
+	fmt.Println(l.length)
 }

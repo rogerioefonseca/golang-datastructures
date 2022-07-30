@@ -27,9 +27,9 @@ func (b *bucket) search(k string) bool {
 	return false
 }
 
-//func (h *hashTable) delete(key string) {
-//	index := hash(key)
-//}
+func (b *bucket) delete(key string) {
+	index := hash(key)
+}
 
 func hash(key string) int {
 	sum := 0
