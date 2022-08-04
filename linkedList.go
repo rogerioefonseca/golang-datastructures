@@ -2,46 +2,66 @@ package main
 
 import "fmt"
 
-type node struct {
-	data int
-	next *node
+type LinkedList struct {
+	head   *Node
+	tail   *Node
+	lenght int
 }
 
-type linkedList struct {
-	head   *node
-	length int
+type Node struct {
+	data     string
+	next     *Node
+	previous *Node
 }
 
-func (l *linkedList) prepend(n *node) {
-	tmpValue := l.head
+func (l *LinkedList) prepend(n *Node) {
+	n.next = l.head
+	l.head.previous = n
 	l.head = n
-	l.head.next = tmpValue
-	l.length++
+
 }
 
-func (l linkedList) listAll() {
-	toPrint := l.head
-	for l.length != 0 {
-		fmt.Printf("%d %d\n", toPrint.data, toPrint.next)
-		toPrint = toPrint.next
-		l.length--
-	}
+//Append into the end of the linked list
+func (l *LinkedList) add(n *Node) {
+	l.tail.next = n
+	n.previous = l.tail
+	l.tail = n
+}
 
-	fmt.Printf("\n")
+func newLinkedList(node *Node) LinkedList {
+	l := LinkedList{head: node}
+	l.tail = node
+	l.lenght = 1
+
+	return l
 }
 
 func main() {
-	n1 := &node{data: 100}
-	n2 := &node{data: 99}
-	n3 := &node{data: 98}
-	n4 := &node{data: 97}
-
-	l := linkedList{}
-	l.prepend(n1)
+	n1 := &Node{data: "111"}
+	n2 := &Node{data: "222"}
+	n3 := &Node{data: "333"}
+	n4 := &Node{data: "444"}
+	n5 := &Node{data: "555"}
+	n6 := &Node{data: "666"}
+	l := newLinkedList(n1)
 	l.prepend(n2)
 	l.prepend(n3)
 	l.prepend(n4)
+	l.add(n5)
+	l.add(n6)
 
-	l.listAll()
-	fmt.Println(l.length)
+	actualNode := l.head
+	fmt.Println(l.head.next)
+	for actualNode.next != nil {
+		fmt.Printf("%s\n", actualNode.data)
+		actualNode = actualNode.next
+	}
+
+	lastNode := l.tail
+
+	for lastNode != nil {
+		fmt.Println(lastNode)
+		lastNode = lastNode.previous
+	}
+
 }
