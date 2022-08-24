@@ -13,6 +13,10 @@ type Stack struct {
 	length int
 }
 
+func (s *Stack) peek() *Node {
+	return s.top
+}
+
 func (s *Stack) add(d string) {
 	node := Node{data: d}
 	s.length++
@@ -44,6 +48,7 @@ func main() {
 
 	node := s.top
 	length := s.length
+	println("ASASASASASASASS")
 	for length > 0 {
 		fmt.Println(node.data)
 		node = node.next
@@ -52,6 +57,7 @@ func main() {
 
 	println("---------------------------------")
 	s.pop()
+	s.pop()
 	node = s.top
 	length = s.length
 	for length > 0 {
@@ -59,5 +65,8 @@ func main() {
 		node = node.next
 		length--
 	}
+
+	println("---------------------------------")
+	println(s.peek().data)
 
 }
